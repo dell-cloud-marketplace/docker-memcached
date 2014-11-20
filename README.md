@@ -77,5 +77,11 @@ True
 >>> print client.get('key')
 value
 ```
+## Reference
 
+### Image Details
+
+Inspired by [tutum/memcached](https://github.com/tutumcloud/tutum-docker-memcached)
+
+Pre-built Image | [https://registry.hub.docker.com/u/dell/memcached](https://registry.hub.docker.com/u/dell/memcached) 
 
