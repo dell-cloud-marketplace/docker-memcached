@@ -1,26 +1,36 @@
-tutum-docker-memcached
+dell-memcached
 ======================
 
 
-Base docker image to run a Memcached server
+Memcached is a high-performance, distributed memory caching system.
 
+## Components
 
-Usage
------
+The stack comprises the following components:
 
-To create the image `tutum/memcached`, execute the following command on the tutum-docker-memcached folder:
+Name       | Version                   | Description
+-----------|---------------------------|------------------------------
+RabbitMQ   | 1.4.14                    | Memory caching system
+Ubuntu     | Trusty                    | Operating system
 
-	docker build -t tutum/memcached .
+## Usage
 
-To run the image and bind to port 11211:
+### 1. Start the Container
 
-	docker run -d -p 11211:11211 tutum/memcached
+#### A. Basic Usage
+
+Start your container with:
+
+* Port 11211 exposed (memcached)
+* A named container (**memcached**)
+
+	sudo docker run -d -p 11211:11211 --name memcached dell/memcached
 
 The first time that you run your container, a new user `memcached` with all privileges 
 will be created in Memcached with a random password. To get the password, check the logs
 of the container by running:
 
-	docker logs <CONTAINER_ID>
+	docker logs memcached
 
 You will see an output like the following:
 
@@ -36,41 +46,36 @@ In this case, `h0znMbk3RkM8` is the password assigned to the `admin` user.
 
 Done!
 
+#### B. Advanced Usage
 
-Setting a specific password for the admin account
--------------------------------------------------
+Start your container with:
 
-If you want to use a preset password instead of a random generated one, you can
-set the environment variable `MEMCACHED_PASS` to your specific password when running the container:
+* Port 11211 exposed (memcached)
+* A named container (**memcached**)
+* A specific password for the admin account by setting the environment variable `MEMCACHED_PASS`
 
-	docker run -d -p 11211:11211 -e MEMCACHED_PASS="mypass" tutum/memcached
+	sudo docker run -d -p 11211:11211 -e MEMCACHED_PASS="mypass" --name memcached dell/memcached
 	
-	
-Testing with Python
--------------------
+In this case, `mypass` is the password assigned to the `admin` user.
+
+
+### 2. Testing with Python
+
 
 First, install `bmemcached`. To do this, use pip or easy_install:
 
-    pip install python-binary-memcached
+    sudo pip install python-binary-memcached
 
-Testing `tutum/memcached`:
+To test your memcached installation, run the `python` command as follows:
 
-```python
+```no-highlight
+python
 >>> import bmemcached
->>> client = bmemcached.Client(('localhost:11211',),'admin','h0znMbk3RkM8')
+>>> client = bmemcached.Client(('localhost:11211',),'admin','<admin_password>')
 >>> client.set('key','value')
 True
 >>> print client.get('key')
 value
 ```
 
-Mounting a file volume
----------------------------------
 
-Coming soon!
-
-
-Migrating an existing Memcached server
-----------------------------------
-
-Coming soon!
