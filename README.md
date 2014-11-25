@@ -54,8 +54,10 @@ Start your container with:
 * A named container (**memcached**)
 * A specific password for the admin account by setting the environment variable `MEMCACHED_PASS`
 
-	sudo docker run -d -p 11211:11211 -e MEMCACHED_PASS="mypass" --name memcached dell/memcached
-	
+```no-highlight
+sudo docker run -d -p 11211:11211 -e MEMCACHED_PASS="mypass" --name memcached dell/memcached
+```
+
 In this case, `mypass` is the password assigned to the `admin` user.
 
 
