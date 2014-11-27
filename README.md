@@ -2,7 +2,7 @@ dell-memcached
 ======================
 
 
-Memcached is a high-performance, distributed memory caching system.
+This image installs [Memcached](http://memcached.org/), an open-source high-performance, distributed memory caching system.
 
 ## Components
 
@@ -10,7 +10,7 @@ The stack comprises the following components:
 
 Name       | Version                   | Description
 -----------|---------------------------|------------------------------
-RabbitMQ   | 1.4.14                    | Memory caching system
+Memcached  | 1.4.14                    | Memory caching system
 Ubuntu     | Trusty                    | Operating system
 
 ## Usage
