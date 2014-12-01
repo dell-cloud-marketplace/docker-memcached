@@ -64,7 +64,7 @@ In this case, `mypass` is the password assigned to the `admin` user.
 ### 2. Testing with Python
 
 
-First, install `bmemcached on the container. To do this, use pip or easy_install:
+First, install `bmemcached in the container. To do this, use pip or easy_install:
 
     sudo pip install python-binary-memcached
 
