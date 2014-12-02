@@ -27,8 +27,8 @@ Do:
 sudo docker run -d -p 11211:11211 --name memcached dell/memcached
 ```
 
-The first time that you run your container, a new user `memcached` with all privileges 
-will be created in Memcached with a random password. To get the password, check the logs
+The first time that you run your container, a new user `memcached` with all privileges,
+and a random password, will be created in Memcached. To get the password, check the logs
 of the container by running:
 
 ```no-highlight
