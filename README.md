@@ -66,17 +66,18 @@ sudo docker run -d -p 11211:11211 -e MEMCACHED_PASS="mypass" --name memcached de
 In this case, `mypass` is the password assigned to the `admin` user.
 
 ### 2. Testing with Python
-First, install the Python `bmemcached` library on the host. To do this, use pip or easy_install:
+First, install the Python `bmemcached` library on the host. To do this, use pip or easy_install. For example:
 
 ```no-highlight
 sudo pip install python-binary-memcached
 ```
 
-Start python on the command line, and test your memcached installation as follows:
+Start python on the command line, and test your memcached installation as follows (note that we are assuming an
+admin password of `mypass`):
 
 ```no-highlight
 >>> import bmemcached
->>> client = bmemcached.Client(('localhost:11211'),'admin','mypass')
+>>> client = bmemcached.Client(('localhost:11211'), 'admin', 'mypass')
 >>> client.set('colourkey','red')
 True
 >>> print client.get('colourkey')
