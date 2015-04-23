@@ -7,7 +7,7 @@ The stack comprises the following components:
 
 Name       | Version | Description
 -----------|---------|------------------------------
-Memcached  | 1.4.14  | Memory caching system
+Memcached  | Latest  | Memory caching system
 Ubuntu     | Trusty  | Operating system
 
 ## Usage
