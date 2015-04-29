@@ -24,7 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pwgen
 
 # Clean package cache
-+RUN apt-get -y clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get -y clean && rm -rf /var/lib/apt/lists/*
 
 # Add the script to create admin user
 COPY create_memcached_admin_user.sh /create_memcached_admin_user.sh
