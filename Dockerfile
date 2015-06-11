@@ -3,24 +3,32 @@ MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
 
 # Update packages
 RUN apt-get update
-    
-# Set the environment variable for package install
-ENV DEBIAN_FRONTEND noninteractive
 
-# Install memcached
-RUN apt-get -y install \
+# Ensure UTF-8
+RUN locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales && \
+    export LC_ALL=en_US.UTF-8 && \
+    export LANGUAGE=en_US.UTF-8 && \
+    export LANG=en_US.UTF-8
+    
+# Install packages
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get -y install \
     libevent-dev \
     libsasl2-2 \
     sasl2-bin \
     libsasl2-2 \
     libsasl2-dev \
     libsasl2-modules \
-    memcached=1.4.14-0ubuntu9 \
+    memcached \
     pwgen
 
+# Clean package cache
+RUN apt-get -y clean && rm -rf /var/lib/apt/lists/*
+
 # Add the script to create admin user
-ADD create_memcached_admin_user.sh /create_memcached_admin_user.sh
-ADD run.sh /run.sh
+COPY create_memcached_admin_user.sh /create_memcached_admin_user.sh
+COPY run.sh /run.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 11211
