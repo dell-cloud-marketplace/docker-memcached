@@ -31,6 +31,9 @@ COPY create_memcached_admin_user.sh /create_memcached_admin_user.sh
 COPY run.sh /run.sh
 RUN chmod 755 /*.sh
 
+# Environmental variables.
+ENV MEMCACHED_PASS ""
+
 EXPOSE 11211
 
 CMD ["/run.sh"]
