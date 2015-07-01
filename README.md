@@ -86,6 +86,12 @@ red
 
 ## Reference
 
+### Environmental Variables
+
+Variable       | Default  | Description
+---------------|----------|----------------------------
+MEMCACHED_PASS | *random* | Password for user **admin**
+
 ### Image Details
 Based on [tutum/memcached](https://github.com/tutumcloud/tutum-docker-memcached)
 
